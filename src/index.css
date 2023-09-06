@@ -17,6 +17,11 @@ body {
   background-color: #8b5cf6;
 }
 
+/* TEMPORALES SOLO PARA EL TEST */
+.populares {
+  list-style: none;
+}
+
 .enlaces a {
   color:#f1f1f1;
   font-size: 1.5rem;
@@ -24,3 +29,5 @@ body {
   text-decoration: none;
   text-align: center;
 }
+
+/* ----------------------------------- */

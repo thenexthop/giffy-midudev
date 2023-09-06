@@ -3,19 +3,30 @@ import {
   RouterProvider 
 } from 'react-router-dom';
 
-// components
-import ListOfGifs from "./components/ListOfGifs";
-import { Children } from 'react';
+// layouts
 import Main from './layouts/Main';
+
+// pages
+import Home from './pages/home/Home';
+import Detail from './pages/detail/Detail';
+import SearchResult from './pages/searchResult/SearchResult';
 
 const router = createBrowserRouter([
   {
-    path: '/gif',
+    path: '/',
     element: <Main />,
     children: [
       {
-        path: '/gif/:keyword',
-        element: <ListOfGifs />
+        index: true,
+        element: <Home />
+      },
+      {
+        path: '/gif/:id',
+        element: <Detail />
+      },
+      {
+        path: '/search/:keyword',
+        element: <SearchResult />
       },
     ]
   },
