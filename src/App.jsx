@@ -1,33 +1,34 @@
-import { useState, useEffect } from 'react'
+import { 
+  createBrowserRouter, 
+  RouterProvider 
+} from 'react-router-dom';
 
-// services
-import { getGifs } from './services/gifs.service';
+// components
+import ListOfGifs from "./components/ListOfGifs";
+import { Children } from 'react';
+import Main from './layouts/Main';
+
+const router = createBrowserRouter([
+  {
+    path: '/gif',
+    element: <Main />,
+    children: [
+      {
+        path: '/gif/:keyword',
+        element: <ListOfGifs />
+      },
+    ]
+  },
+  
+  
+
+]);
 
 function App() {
-  const [gifs, setGifs] = useState([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const res = await getGifs({keyword: "matrix"});
-      console.log(res);
-      setGifs(res); 
-    }
-
-    fetchData();
-
-  }, []);
-
+  
   return (
     <>
-      <ul>
-        {
-          gifs && gifs.map(item => (
-            <li key={item.id}>
-              <img src={item.url} alt={item.title} /> 
-            </li>
-          ))
-        }
-      </ul>
+      <RouterProvider router={router} />
     </>
   )
 }
