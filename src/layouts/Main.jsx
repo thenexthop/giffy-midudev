@@ -9,7 +9,8 @@ const populares = [
   "random",
   "venezuela",
   "regular show",
-  "adventure time"
+  "adventure time",
+  "family guy"
 ];
 
 export default function Main(){
@@ -30,35 +31,40 @@ export default function Main(){
 
   return (
     <>
-      <h1>Buscar gifs</h1>  
-      <form onSubmit={onSubmit}>
-        <input 
-          onChange={handleChange}
-          value={keyword}
-          placeholder='Busca tus gifs aquí...'
-        />
-        <button>Buscar</button>
-      </form>
-      <h2>Lista de gifs mas visitados</h2>
-      <div className="enlaces">
-        <ul className="populares">
-          {
-            populares.map(item => (
-              <li key={item}>
-                <Link to={`search/${item}`}>Gifs de {item}</Link>
-              </li>
-            ))
-          }
-        </ul> 
-
-        {/* <Link to="/gifs/pandas">Gifs de pandas</Link>
-        <Link to="/gifs/rick">Gifs de Rick</Link>
-        <Link to="/gifs/random">Gifs de Random</Link>
-        <Link to="/gifs/venezuela">Gifs de Venezuela</Link> */}
-        <Link to="/search/venezuela">Search result</Link>
-        <Link to="/gif/325">Detail</Link>
-      </div>
-      <Outlet />
+      <div className="container">
+        <header className='main-header'>
+          <Link to={"/"}> 
+            <h1>Giffy app</h1>  
+          </Link>
+          <h2>Buscar gifs</h2>  
+          <form onSubmit={onSubmit}>
+            <input 
+              onChange={handleChange}
+              value={keyword}
+              placeholder='Busca tus gifs aquí...'
+            />
+            <button>Buscar</button>
+          </form>
+          <h2>Lista de gifs mas visitados</h2>
+          <div className="enlaces">
+            <ul className="populares">
+              {
+                populares.map(item => (
+                  <li key={item}>
+                    <Link to={`search/${item}`}>Gifs de {item}</Link>
+                  </li>
+                ))
+              }
+            </ul> 
+          </div>
+        </header>
+        
+        
+        <main>
+          <Outlet />
+        </main>
+        <footer><small>agaha &copy;2023</small></footer>
+      </div> 
     </>
 
   );

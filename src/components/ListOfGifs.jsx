@@ -7,7 +7,7 @@ import './ListOfGifs.css';
 export default function ListOfGifs({ gifs }) { //eslint-disable-line
   
   return (
-    <ul className='lista--gifs'>
+    <div className='lista--gifs'>
       {
           gifs && gifs.map(({id, title, url}) => (
             <Gif 
@@ -18,6 +18,6 @@ export default function ListOfGifs({ gifs }) { //eslint-disable-line
             />
           ))
         }
-    </ul>
+    </div>
   )
 }

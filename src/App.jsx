@@ -3,6 +3,9 @@ import {
   RouterProvider 
 } from 'react-router-dom';
 
+// global context 
+import GifsContextProvider from './context/GifsContext';
+
 // layouts
 import Main from './layouts/Main';
 
@@ -21,11 +24,11 @@ const router = createBrowserRouter([
         element: <Home />
       },
       {
-        path: '/gif/:id',
+        path: 'gif/:id',
         element: <Detail />
       },
       {
-        path: '/search/:keyword',
+        path: 'search/:keyword',
         element: <SearchResult />
       },
     ]
@@ -39,7 +42,9 @@ function App() {
   
   return (
     <>
-      <RouterProvider router={router} />
+      <GifsContextProvider>
+        <RouterProvider router={router} />
+      </GifsContextProvider>
     </>
   )
 }

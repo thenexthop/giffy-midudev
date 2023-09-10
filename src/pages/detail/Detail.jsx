@@ -1,12 +1,21 @@
+import { useContext } from "react";
 import { useParams } from "react-router-dom"
 
+// context
+import { GifsContext } from "../../context/GifsContext";
+
+// components
+import Gif from "../../components/Gif";
+
 const Detail = () => {
-
   const { id } = useParams();
+  const { gifs } = useContext(GifsContext);
 
-  console.log("id del gif: ", id);
+  const singleGif = gifs.find(gif => gif.id === id);
+  // console.log("gifs: ", gifs);
+
   return (
-    <h2>Gif con el id: {id}</h2>
+    <Gif { ...singleGif } />
   )
 }
 

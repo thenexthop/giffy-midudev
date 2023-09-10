@@ -1,44 +1,33 @@
-import { useEffect, useState } from "react";
-
-// services
-import { getGifs } from "../../services/gifs.service";
+// custom hooks
+import { useGifs } from "../../hooks/useGifs";
 
 // components
 import ListOfGifs from "../../components/ListOfGifs"
 import { useParams } from "react-router-dom";
-
+import TrendingSearches from "../../components/TrendingSearches";
 
 const SearchResult = () => {
-  const [gifs, setGifs] = useState([]);
-  const [loading, setLoading] = useState(false);
-
+  
   const { keyword } = useParams();
-
-  useEffect(()=>{
-    setLoading(true);
-    const fetchData = async () => {
-      try {
-        
-        const results = await getGifs({ keyword });
-        setGifs(results);
-
-      } catch (error) {
-        console.error(error);
-      }finally {
-        setLoading(false);
-      }
-    }    
-    
-    fetchData();
-
-  }, [keyword])
+  const {loading, gifs } = useGifs({keyword});
 
   return (
     <>
       {
         loading 
-          ? <h3>Loading...</h3>
-          : <ListOfGifs gifs={gifs} />
+        ? <h3>Loading...</h3>
+        : (
+          <>
+            <section className="results">
+              <h3 className="search--title">
+                {/* {decodeURI(keyword)} */}
+                {keyword}
+              </h3>
+              <ListOfGifs gifs={gifs} />
+            </section>
+            <TrendingSearches />
+          </>
+          )
       }
     </>
   )

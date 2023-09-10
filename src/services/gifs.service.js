@@ -1,9 +1,12 @@
-const API_KEY = 'wmCUD19DK2j5cdxT0JfYmef5v6sMIVgl';
+import {
+   API_KEY,
+   API_URL
+} from './apiConfig';
 
 export async function getGifs({ keyword = "rick" } = {}) {
-   const API_URL = `https://api.giphy.com/v1/gifs/search?api_key=${API_KEY}&q=${keyword}&limit=21&offset=0&rating=r&lang=en`;
+   const endpoint = `${API_URL}/gifs/search?api_key=${API_KEY}&q=${keyword}&limit=21&offset=0&rating=r&lang=en`;
    
-   const response = await fetch(`${API_URL}`);
+   const response = await fetch(`${endpoint}`);
    
    const json = await response.json();
 

@@ -1,3 +1,11 @@
+:root {
+  --brand-color_1: #00ff99;
+  --brand-color_2: #00ccff;
+  --brand-color_3: #9933ff;
+  --brand-color_4: tomato;
+  --brand-color_5: #fff35c;
+  --brand-color_6: #8429de;
+}
 
 *,
 *::after,
@@ -14,7 +22,41 @@ h4 {
 
 body {
   color: #f1f1f1;
-  background-color: #8b5cf6;
+  /* background-color: #8b5cf6; */
+  background-color: #1d1e30;
+  min-height: 100vh;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  /* flex-flow: column wrap; */
+}  
+
+main {
+  flex-grow: 1;
+
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 20px;
+}
+
+.trending-list {
+  max-width: 25%;
+}
+
+@media screen and (max-width: 768px) {
+  main {
+    flex-direction: column;
+  } 
+  .trending-list {
+    max-width: 100%;
+  }
+}
+
+
+section.results {
+  flex-grow: 2;
 }
 
 /* TEMPORALES SOLO PARA EL TEST */
@@ -29,5 +71,6 @@ body {
   text-decoration: none;
   text-align: center;
 }
+
 
 /* ----------------------------------- */
